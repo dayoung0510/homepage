@@ -16,7 +16,7 @@ const WholeDiv = styled.div`
 `;
 
 const CenterDiv = styled.div`
-  background-color: pink;
+  background-color: yellowgreen;
   width: 90%;
   height: 100%;
   display: flex;
