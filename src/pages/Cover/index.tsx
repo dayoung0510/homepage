@@ -1,58 +1,65 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import ArrowLeftIcon from '@material-ui/icons/ArrowLeft';
 import ArrowRightIcon from '@material-ui/icons/ArrowRight';
-import IconButton from '@material-ui/core/IconButton';
+import First from 'assets/images/first.jpg';
+import Second from 'assets/images/second.jpg';
+import Hongkong from 'assets/images/hongkong.jpg';
+import { Gradient, Shake, Opacity } from 'styles/animations';
+import { WholeDiv, CircleButton, ArrowDiv } from './styles';
 
-const WholeDiv = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background: lightgray;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-`;
+const BackgroundImgs = [First, Second, Hongkong];
 
-const CenterDiv = styled.div`
-  background-color: pink;
-  width: 90%;
+type Props = {
+  stage: number;
+};
+
+const CenterDiv = styled.div<Props>`
+  background-color: #000;
+  animation: ${Shake} 0.4s ease-out both;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-`;
-
-const CircleButton = styled.button`
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  &:hover {
-    box-shadow: 5px 5px 3px lightgray;
-  }
-`;
-const Arrow = styled(IconButton)`
-  .MuiSvgIcon-root {
-    font-size: 5rem;
-  }
+  background-size: cover;
+  ${({ stage }) => css`
+    background-image: url(${BackgroundImgs[stage]});
+  `}
 `;
 
 const Cover: React.FC = () => {
   const history = useHistory();
+  const [state, setState] = useState(0);
+
+  const minStage = 0;
+  const maxStage = BackgroundImgs.length - 1;
+
+  const handlePage = (addValue: number) => {
+    setState(() => {
+      const newStage = state + addValue;
+
+      const stage =
+        minStage <= newStage && newStage <= maxStage ? newStage : minStage;
+
+      return stage;
+    });
+  };
+
   return (
     <WholeDiv>
-      <Arrow>
-        <ArrowLeftIcon />
-      </Arrow>
-      <CenterDiv>
+      <ArrowDiv style={{ left: 0 }}>
+        <ArrowLeftIcon onClick={() => handlePage(-1)} />
+      </ArrowDiv>
+      <CenterDiv stage={state}>
         <CircleButton onClick={() => history.push('/home')}>
           ENTRANCE
         </CircleButton>
       </CenterDiv>
-      <Arrow>
-        <ArrowRightIcon />
-      </Arrow>
+      <ArrowDiv style={{ right: 0 }}>
+        <ArrowRightIcon onClick={() => handlePage(1)} />
+      </ArrowDiv>
     </WholeDiv>
   );
 };

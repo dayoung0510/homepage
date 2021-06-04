@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+
+  html {
+    font-size: 20px;
+  }
   html,
   body {
     color: #717578;
@@ -9,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     padding: 0;
     margin: 0;
-    font-size: 16px;
+    font-size: 20px;
   }
 
   * {
