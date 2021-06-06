@@ -6,7 +6,6 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import First from 'assets/images/first.jpg';
 import Second from 'assets/images/second.jpg';
 import Hongkong from 'assets/images/hongkong.jpg';
-import { Gradient, Shake, Opacity } from 'styles/animations';
 import { WholeDiv, CircleButton, ArrowDiv } from './styles';
 
 const BackgroundImgs = [First, Second, Hongkong];
@@ -17,7 +16,6 @@ type Props = {
 
 const CenterDiv = styled.div<Props>`
   background-color: #000;
-  animation: ${Shake} 0.4s ease-out both;
   width: 100%;
   height: 100%;
   display: flex;
