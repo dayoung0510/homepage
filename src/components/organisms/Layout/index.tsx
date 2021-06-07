@@ -5,7 +5,6 @@ import Home from 'pages/Home';
 import Profile from 'pages/Profile';
 
 const Layout: React.FC = () => {
-  console.log('layout');
   const history = useHistory();
   return (
     <div>
