@@ -6,9 +6,11 @@ import ArrowRightIcon from '@material-ui/icons/ArrowRight';
 import First from 'assets/images/first.jpg';
 import Second from 'assets/images/second.jpg';
 import Hongkong from 'assets/images/hongkong.jpg';
+import TreeVideo from 'assets/images/tree_video2.mp4';
 import { WholeDiv, CircleButton, ArrowDiv, Video } from './styles';
 
 const BackgroundImgs = [
+  { type: 'video', src: TreeVideo },
   { type: 'pic', src: First },
   { type: 'pic', src: Second },
   { type: 'pic', src: Hongkong },
@@ -49,12 +51,12 @@ const Cover: React.FC = () => {
 
   return (
     <WholeDiv>
-      {/* {BackgroundImgs[state].type === 'video' && (
+      {BackgroundImgs[state].type === 'video' && (
         <Video loop autoPlay muted>
           <source src={TreeVideo} type="video/mp4" />
           <track src="" kind="captions" label="captions" />
         </Video>
-      )} */}
+      )}
 
       <ArrowDiv style={{ left: 0 }}>
         <ArrowLeftIcon onClick={() => handlePage(-1)} />
